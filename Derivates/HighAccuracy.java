@@ -7,9 +7,7 @@ package NumericalMethods.Derivates;
 public class HighAccuracy{
     // This formula was taken from a book on numerical methods
     public static double centeredFormula(double h, double Xi_minus_2, double Xi_minus_1, double Xi_plus_1, double Xi_mas2){
-        double numerator = -Xi_mas2 + 8*Xi_plus_1 - 8*Xi_minus_1 + Xi_minus_2;
-        double denominator = 12 * h;
-        return numerator / denominator ;
+        return ( -Xi_mas2 + 8*Xi_plus_1 - 8*Xi_minus_1 + Xi_minus_2) / ( 12 * h) ;
     }
 
     // The function to be differentiated is evaluated at the given points and stored
@@ -49,6 +47,6 @@ public class HighAccuracy{
     public static void main(String[]args){
         // The lower the value of h, the higher the accuracy of the value of the first derivative.
         // centered( x, h );
-        centered(1,0.00001);
+        centered(1,0.0001);
     }
 }
