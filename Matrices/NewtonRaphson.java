@@ -47,11 +47,16 @@ public class NewtonRaphson {
 
     public static double[][] originalJacobian(double x, double y, double z) {
         // System of ecuations to be solved
-        double[][] original = { { 2 * x, 2 * y, 2 * z, -Math.pow(x, 2) - Math.pow(y, 2) - Math.pow(z, 2) + 16 },
-                                { 2 * x, 2 * y - 8, 2 * z, -Math.pow(x, 2) - Math.pow(y - 4, 2) - Math.pow(z, 2) + 16 },
-                                { 2 * x, 2 * y - 4, 2 * z - 2 * Math.sqrt(12),-Math.pow(x, 2) - Math.pow(y - 2, 2) - Math.pow(z - Math.sqrt(12), 2) + 16 } };
+        // double[][] original = { { 2 * x, 2 * y, 2 * z, -Math.pow(x, 2) - Math.pow(y, 2) - Math.pow(z, 2) + 16 },
+        //                         { 2 * x, 2 * y - 8, 2 * z, -Math.pow(x, 2) - Math.pow(y - 4, 2) - Math.pow(z, 2) + 16 },
+        //                         { 2 * x, 2 * y - 4, 2 * z - 2 * Math.sqrt(12),-Math.pow(x, 2) - Math.pow(y - 2, 2) - Math.pow(z - Math.sqrt(12), 2) + 16 } };
 
-        // double[][] original = {{2*x,1,-Math.pow(x, 2)-y+37},{1,-2*y,-x+Math.pow(y, 2)+5}};
+        double[][] original = {{3                        , z*Math.sin(y*z)          , y*Math.sin(y*z) , -3*x+Math.cos(y*z)+(1/2)                               },
+                               {2*x                      , -81*(2*y+0.2)            , Math.cos(z)     , -Math.pow(x, 2)+81*Math.pow(y+0.1, 2)-Math.sin(z)-1.06 },
+                               {-y*Math.pow(Math.E,-x*y) , -x*Math.pow(Math.E, -x*y), 20              , -Math.pow(Math.E, -x*y)-20*z-((10*Math.PI-3)/3)        }};
+        
+        
+                               // double[][] original = {{2*x,1,-Math.pow(x, 2)-y+37},{1,-2*y,-x+Math.pow(y, 2)+5}};
 
         return original;
     }
@@ -143,7 +148,8 @@ public class NewtonRaphson {
 
     public static void main(String[] args) {
 
-        double[] vector = { 1, 2.82, 2.33 };
+        // double[] vector = { 1, 2.82, 2.33 };
+        double[] vector = {0.1,0.1,-0.1};
         // double[] vector = {1,1,1};
         // double[] vector = {5,0};
 
